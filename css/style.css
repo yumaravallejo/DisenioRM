@@ -1,60 +1,94 @@
-html {
-  margin: 0; padding: 0;
-  box-sizing: border-box;
+/*
+  todo Centrar del todo las camisetas de la tienda
+  todo meterle margin a el form
+  todo
+*/
 
+html {
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
   box-sizing: inherit;
   font-family: Helvetica, Arial, Calibri;
+  min-width: 100%;
 }
 
 /* HEADER -------- CABEZA DE PÁGINA ----- */
 header {
-  position:static;
+  position: static;
   width: 100%;
   box-shadow: 0px 4px 20px black;
 }
 
 /* CABECERA -----------------------------------------*/
-#cabecera {
-  background: url(/img/bernabeu.jpg) no-repeat;
+
+/*#cabecera {*/
+/*  background: url("../img/bernabeu.jpg") repeat-x;*/
+/*  display: flex;*/
+/*  justify-content: flex-start;*/
+/*}*/
+
+.cabecera {
+  background: url("../img/bernabeu.jpg") repeat-x;
   display: flex;
   justify-content: flex-start;
+
 }
 
 #logo-madrid img {
-  width:9em ;
+  width: 8em;
+  padding: 10px;
 }
 
-#cabecera #texto-madrid {
-  text-align: center;
-  padding-top: 2%;
+#logo-madrid {
+  margin-right: 25%;
+}
+
+#texto-madrid h1 {
+  text-align: right;
+  padding-top: 1.5%;
   font-family: Mohave;
   font-weight: bold;
   color: white;
   -webkit-text-stroke: 1px #453C69;
   text-shadow: 0px 4px 9px black;
-  font-size: 5em;
+  font-size: 3.5em;
   width: 100%;
-  padding-bottom: 0.61em;
   align-items: center;
-  margin-right:5%
+  margin-right: 5%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
+/*OCULTO HASTA QUE SE HACE PEQUEÑO*/
+#logo-adidas {
+  min-width: 10em;
+  max-width: 10em;
+  padding: 25px
+}
+
+#logo-adidas img {
+  min-width: 9em;
+  max-width: 9em;
+}
 
 /* MENÚ -----------------------------------------*/
 #menu {
   background: #453C69;
   border-bottom: 5px solid #EAA651;
-
   display: flex;
   justify-content: right;
-
 }
 
 #menu #hamburguesa ol li {
-  text-align:center;
+  text-align: center;
 }
 
 #menu #hamburguesa {
@@ -70,62 +104,450 @@ header {
   justify-content: space-around;
 }
 
-#menu #busq-user-car {
-  margin-right: 1em;
+#busq-user-car {
+  margin-left: 2em;
   padding-top: 5px;
 }
 
-#menu #busq-user-car ol li {
+#busq-user-car ol li {
   padding-right: 5px;
-  text-align:center;
+  text-align: center;
   list-style-type: none;
 }
 
-#menu #busq-user-car ol{
+
+
+#busq-user-car ol {
   display: flex;
   justify-content: space-around;
   margin-block-start: 13px;
   padding-inline-start: 0;
-
-
 }
-
 
 #busq-user-car ol li input[type="text"] {
   width: 95%;
+  border-radius: 10px;
+  padding: 0.3em;
 }
 
-/* CONTENIDO ------------------------------------------------- */
-#contenido {
-  margin: 0 auto;
-  width: 90%;
+/* MENÚ NAV ------------------------------------------------------------- */
 
+.offScreenMenu {
+  position: fixed;
+  top: 190.5px;
+  left: -41px;
+  width: 50%;
+  max-width: 300px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: none;
+}
+
+.link-off {
+  padding: 15px 0;
+  display: block;
+  transition: background-color 0.4s;
+  color: rgba(255,255,255,0.75);
+  padding-left: 27px;
+  background: #453C69;
+  width: 100%;
+}
+
+.link-off:hover, .link-off:focus {
+  background-color: #5a4d8f;
+}
+
+.last {
+  border-bottom: 5px solid #EAA651;
+}
+
+#menu-in {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #453C69;
+  border-bottom: 5px solid #EAA651;
+  padding: 0 30px;
+  height: 60px;
+}
+
+#menu-in a {
+  display: block;
+}
+
+#nav {
+  display: none;
+}
+
+.nav-list {
+  display: flex;
+  column-gap: 1.5em;
+}
+
+.nav-item {}
+
+.nav-link {
+  color: rgba(255,255,255,0.7);
+  transition: color 0.4s;
+  font-size: 20px;
+}
+
+.nav-link:hover, .nav-link:focus{
+  color: rgba(255,255,255,1) ;
+}
+
+.hamburguer-menu {
+  display: none;
+  cursor:pointer;
+  padding-left: 4px
+}
+
+.hamburguer-menu ol {
+  display: none;
+}
+
+.show-menu .nav {
+  display: block;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: rgba(255,255,255,0.7) ;
+  margin: 5px auto;
+  transition-property: background-color;
+  transition-duration: 0.4s;
+}
+
+.hamburguer-menu:hover, .hamburguer-menu:focus {
+  .bar {
+    background-color: rgba(255,255,255,1);
+  }
+}
+
+#logo-adidas img{
+  display: none;
+  width: 40%;
+}
+
+
+.header-cont {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+/* CONTENIDO PRINCIPAL ------------------------------------------------- */
+
+#contenido {
+  padding-top: 230px;
+  margin: 0 auto;
+  width: 85%;
+}
+
+#contenido p {
+  text-align: justify;
+  line-height: 1.2em;
+}
+
+#contenido h2 {
+  padding-top: 1em;
+  color: #453C69;
+  text-align: center;
+}
+
+/* CONTENIDO REGISTRO / LOGIN ------------------------------------------------- */
+#contenido-r h2 {
+  padding-top: 2em;
+  color: #453C69;
+  color: #453C69;
+  text-align: center;
+  width: 100%;
+}
+
+.formcrear {
+  text-align: center;
+}
+
+#contenido-r .formcrear input[type="text"], .formcrear input[type="password"]{
+  padding: 0.8em;
+  margin-bottom: 2em;
+  width: 96%;
+  text-align: center;
+  border-radius: 100px;
+}
+
+.boton-cont {
+  background-color: #EAA651;
+  border: 1px solid #939393;
+  padding: 0.8em;
+  margin: 0 auto;
+  width: 70%;
+  border-radius: 50px;
+  margin-top: 1em;
+  text-align: center;
+  transition: background-color 0.4s;
+}
+
+.boton-cont:hover, .boton-cont:focus {
+  background-color: #df8d31;
+}
+
+.verificar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.socio {
+  display: flex;
+  justify-content: left;
+}
+
+.socio span {
+  padding-right: 5px;
+}
+
+#contenido-r #preguntas {
+  font-size: 0.8em;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+#preguntas a:hover, #preguntas a:focus {
+  color: #8273bf;
+}
+
+
+#preguntas * a {
+  font-weight: bold;
+  color: #453C69;
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+/* CONTENIDO COMPETICIÓN ------------------------------------------------- */
+
+#contenido-c {
+  padding-top: 230px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#contenido-c h2 {
+  color: white;
+  background-color: #453C69;
+  width: 100%;
+}
+
+.pedir-datos {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 1em;
+  height: 10em;
+}
+
+#contenido-c h2 img {
+  width: 1em;
+  padding-top: 4px;
+}
+
+#contenido-c .pedir-datos img {
+  border-radius: 7px;
+  border: 1px solid black;
+}
+
+#parte-izq {
+  margin-left: 5%;
+  float: left;
+  width: 60%;
+
+}
+
+#parte-dcha {
+  float: left;
+  width: 30%;
+  margin-right: 5%;
+}
+
+#parte-dcha img {
+
+  left: 50px;
+}
+
+.info-partido {
+  text-align: left;
+  width: 60%;
+  height: auto;
+  padding: 20px;
+  margin-left: 10px;
+  border-radius: 8px;
+  background-color: #F3F3F3;
+  -webkit-box-shadow: 1px 1px 10px black;
+}
+
+/* CONTENIDO TIENDA ------------------------------------------------- */
+
+#contenido-t {
+  padding-top: 230px;
+  padding-bottom: 230px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+#tienda-real {
+  margin-top: 2em;
+  border-top: 2px solid #453C69;
+  border-bottom: 2px solid #453C69;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#tienda-real h2 {
+  color: #453C69;
+  margin-left: 1em;
+  margin-right: 1em;
+
+}
+
+#productos {
+  width: 110%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#productos img{
+  width: 70%;
+}
+
+#productos div {
+  float: left;
+  width: 30%;
+  text-align: center;
+}
+
+/* CONTENIDO USUARIO ------------------------------------------------- */
+
+#contenido-u {
+  padding-top: 230px;
+  margin: 0 auto;
+}
+
+#img-user img {
+  width: 20%;
+  height: 20%;
+  object-fit: cover;
+  border: 1px solid black;
+  -webkit-box-shadow: 1px 1px 6px black;
+}
+
+#img-user {
+  text-align: center;
+}
+
+#info-user {
+  text-align: center;
+  width: 35%;
+  border: 2px solid transparent;
+  margin: 0 auto;
+}
+
+#info-user h2{
+  -webkit-text-stroke: 1.5px #453C69;
+  color: white;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 3.5em;
+
+}
+
+.formuser {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:1.875rem ;
+  width: 100%;
+  height: 55%;
+  padding: 0;
+}
+
+#info-user input {
+  width: 92%;
+  padding: 1em;
+  border-radius: 15px;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+#info-user input[type="submit"] {
+  background-color: #EAA651;
+  border: 2px solid #939393;
+  padding: 0.8em;
+  font-size: 1em;
+}
+
+#info-user input[type="text"], #info-user input[type="password"]{
+  padding-block: 0px;
+  padding-inline: 0px;
+  padding: 5px;
+}
+
+#Hala-madrid {
+  width: 30%;
+
+}
+
+#Hala-madrid img {
+  width: 30%;
+}
+
+.imagen-h2 {
+  width: 30%;
+  border: 1px solid black;
+  -webkit-box-shadow: 1px 1px 6px black;
+  min-width: 130px;
+  margin-top: 5%;
+}
+
+#editado {
+  background-color: #E8FFDD;
+  border: 1px solid #5D6C55;
+  color: #5D6C55;
+  border-radius: 10px;
+  text-align: center;
+  width: 70%;
+  padding: 0.3em;
+  position: absolute;
+  bottom: 28%;
+  right: 0%;
+  display: none;
+}
+
+
+
+.cont-h2 {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 
 /* FOOTER -------- PIE DE PÁGINA -------- */
 #footer {
+  margin-top: 2em;
   box-shadow: 0px 4px 20px black;
   clear: both;
   background-color: #453C69;
   display: flex;
   justify-content: center;
-}
-
-#footer p {
-  border: 1px solid green;
-}
-
-#rm {
-  width: 8%;
-  height: 5%;
-  border: 1px solid blue;
-  text-align: center;
-}
-
-#rm p img {
   width: 100%;
-
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 #footer ol {
@@ -133,8 +555,8 @@ header {
 }
 
 #medio {
+  position: static;
   margin: 0 auto;
-  border: 1px solid green
 }
 
 #medio img {
@@ -143,23 +565,54 @@ header {
 }
 
 #terminos-demas {
-  border: 1px solid red;
   display: flex;
   justify-content: center;
+
 }
 
 #terminos-demas ol li {
   display: inline-block;
-  margin: 2px
+  margin: 2px;
+  padding: 4px;
 }
 
 #copyright-terms {
-  text-align:center;
+  text-align: center;
   color: white;
+  padding-bottom: 10px;
 }
 
-#copy>*
+#redes {
+  text-align: center;
+  color: white;
+  padding-top: 5px
+}
 
+/* PIE PARA PÁGINAS PEQUEÑAS ------------------------------------------------- */
+
+#footer-r {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  margin-top: 2em;
+  box-shadow: 0px 4px 20px black;
+  clear: both;
+  background-color: #453C69;
+  display: flex;
+  justify-content: center;
+}
+
+#contenido-r {
+  padding-top: 230px;
+  margin: 0 auto;
+  width: 60%;
+  text-align: justify;
+  max-width: 600px;
+}
+
+/* REGISTRO ============================================================================= */
+
+.registro {}
 
 /* CLASES Y GENERALES */
 
@@ -167,17 +620,128 @@ a {
   display: block;
   color: white;
   text-decoration: none;
-
 }
 
 ol {
   list-style: none;
 }
 
-.abajo {
+.abajo {}
+
+.titulo {
+  text-align: center;
+  font-family: Mohave;
+  font-weight: bold;
+  color: #453C69;
+
 }
 
-#contenido * p {
-  text-align: justify;
-  line-height: 1.2em;
+.space {
+  padding-bottom: 20%;
+}
+
+/* PONER LAS MEDIA QUERYS AL FINAL PARA QUE NO HAYA FALLOS */
+/* NUNCA PONER PÍXELES EN @MEDIA --> porque va por resolución de la pantalla */
+@media only screen and (max-width: 899.5px){
+  .hamburguer-menu {
+    display: block;
+  }
+
+  #menu-in {
+    justify-content: space-between;
+  }
+
+  #busq-user-car {
+    margin-right: 0.3em;
+    margin-left: 0;
+  }
+
+  #texto-madrid {
+    display: none;
+  }
+
+  .cabecera {
+    justify-content: space-between;
+  }
+
+  #logo-adidas img {
+    display: block;
+  }
+
+  #contenido-u {
+  }
+
+  #productos div {
+    float: left;
+    width: 40%;
+  }
+
+  #contenido-u h2 {
+    font-size:1.5em;
+    text-align: right;
+    margin-right: 20px;
+    margin-bottom: 1em;
+    margin-left: 1em;
+  }
+
+  #img-user {
+    display: none;
+  }
+
+  #img-user img{
+    display: none;
+  }
+
+  #contenido-u .imagen-h2 {
+    display: block;
+  }
+
+  #info-user {
+    width: 60%;
+
+  }
+
+  #Hala-madrid {
+    display: none;
+  }
+
+
+  .cont-h2 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cont-h2 img {
+    width: 30%;
+    height: 30%;
+
+  }
+
+}
+
+
+@media only screen and (min-width:899.5px) {
+  #nav {
+    display: block;
+  }
+
+  .offScreenMenu {
+    display: none;
+    border-bottom: none;
+  }
+
+  .offScreenMenu ol {
+    display: none;
+  }
+
+  #logo-adidas img {
+    display: none;
+  }
+
+
+
+  #contenido-u .imagen-h2 {
+    display: none;
+  }
+
 }
