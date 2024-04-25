@@ -1,0 +1,183 @@
+html {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  box-sizing: inherit;
+  font-family: Helvetica, Arial, Calibri;
+}
+
+/* HEADER -------- CABEZA DE PÁGINA ----- */
+header {
+  position:static;
+  width: 100%;
+  box-shadow: 0px 4px 20px black;
+}
+
+/* CABECERA -----------------------------------------*/
+#cabecera {
+  background: url(/img/bernabeu.jpg) no-repeat;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#logo-madrid img {
+  width:9em ;
+}
+
+#cabecera #texto-madrid {
+  text-align: center;
+  padding-top: 2%;
+  font-family: Mohave;
+  font-weight: bold;
+  color: white;
+  -webkit-text-stroke: 1px #453C69;
+  text-shadow: 0px 4px 9px black;
+  font-size: 5em;
+  width: 100%;
+  padding-bottom: 0.61em;
+  align-items: center;
+  margin-right:5%
+}
+
+
+/* MENÚ -----------------------------------------*/
+#menu {
+  background: #453C69;
+  border-bottom: 5px solid #EAA651;
+
+  display: flex;
+  justify-content: right;
+
+}
+
+#menu #hamburguesa ol li {
+  text-align:center;
+}
+
+#menu #hamburguesa {
+  text-align: center;
+  width: 70%;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+#menu #hamburguesa ol {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#menu #busq-user-car {
+  margin-right: 1em;
+  padding-top: 5px;
+}
+
+#menu #busq-user-car ol li {
+  padding-right: 5px;
+  text-align:center;
+  list-style-type: none;
+}
+
+#menu #busq-user-car ol{
+  display: flex;
+  justify-content: space-around;
+  margin-block-start: 13px;
+  padding-inline-start: 0;
+
+
+}
+
+
+#busq-user-car ol li input[type="text"] {
+  width: 95%;
+}
+
+/* CONTENIDO ------------------------------------------------- */
+#contenido {
+  margin: 0 auto;
+  width: 90%;
+
+}
+
+
+/* FOOTER -------- PIE DE PÁGINA -------- */
+#footer {
+  box-shadow: 0px 4px 20px black;
+  clear: both;
+  background-color: #453C69;
+  display: flex;
+  justify-content: center;
+}
+
+#footer p {
+  border: 1px solid green;
+}
+
+#rm {
+  width: 8%;
+  height: 5%;
+  border: 1px solid blue;
+  text-align: center;
+}
+
+#rm p img {
+  width: 100%;
+
+}
+
+#footer ol {
+  display: inline;
+}
+
+#medio {
+  margin: 0 auto;
+  border: 1px solid green
+}
+
+#medio img {
+  width: 15%;
+  margin-top: 0.2em
+}
+
+#terminos-demas {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+
+#terminos-demas ol li {
+  display: inline-block;
+  margin: 2px
+}
+
+#copyright-terms {
+  text-align:center;
+  color: white;
+}
+
+#copy>*
+
+
+/* CLASES Y GENERALES */
+
+a {
+  display: block;
+  color: white;
+  text-decoration: none;
+
+}
+
+ol {
+  list-style: none;
+}
+
+.abajo {
+}
+
+#contenido * p {
+  text-align: justify;
+  line-height: 1.2em;
+}
