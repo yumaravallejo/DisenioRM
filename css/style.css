@@ -1,7 +1,7 @@
 /*
   todo Centrar del todo las camisetas de la tienda
   todo meterle margin a el form
-  todo
+  todo competiciones modo chiquitín
 */
 
 html {
@@ -17,6 +17,20 @@ body {
   box-sizing: inherit;
   font-family: Helvetica, Arial, Calibri;
   min-width: 100%;
+}
+
+#contenedor{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.contenedor-grande {
+  min-height: 100vh;
+}
+
+#contenedor>section {
+  flex: 1;
 }
 
 /* HEADER -------- CABEZA DE PÁGINA ----- */
@@ -138,6 +152,7 @@ header {
   left: -41px;
   width: 50%;
   max-width: 300px;
+  min-width: 220px;
   text-align: left;
   overflow: hidden;
   white-space: nowrap;
@@ -259,6 +274,14 @@ header {
 }
 
 /* CONTENIDO REGISTRO / LOGIN ------------------------------------------------- */
+.espacioHeader {
+  margin-bottom: 10%
+}
+
+#contenido-r {
+  width: 100%;
+}
+
 #contenido-r h2 {
   padding-top: 2em;
   color: #453C69;
@@ -285,6 +308,7 @@ header {
   padding: 0.8em;
   margin: 0 auto;
   width: 70%;
+  max-width: 70%;
   border-radius: 50px;
   margin-top: 1em;
   text-align: center;
@@ -332,15 +356,20 @@ header {
 
 #contenido-c {
   padding-top: 230px;
-  width: 90%;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto
+}
+
+.title {
   margin: 0 auto;
+  width: 71%;
   text-align: center;
 }
 
 #contenido-c h2 {
   color: white;
   background-color: #453C69;
-  width: 100%;
 }
 
 .pedir-datos {
@@ -368,13 +397,19 @@ header {
 
 }
 
-#parte-dcha {
+#parte-abaj {
   float: left;
   width: 30%;
   margin-right: 5%;
 }
 
-#parte-dcha img {
+#parte-abaj h2 {
+  width: 72%;
+  margin: 0 auto;
+  margin-bottom: 10px
+}
+
+#parte-abaj img {
 
   left: 50px;
 }
@@ -390,11 +425,27 @@ header {
   -webkit-box-shadow: 1px 1px 10px black;
 }
 
+
+
+#parte-abaj {
+  display: none;
+  width: 100%;
+}
+
+#parte-dcha {
+  display: none;
+}
+
+.informacion-general {
+  width: 50%;
+}
+
+
+
 /* CONTENIDO TIENDA ------------------------------------------------- */
 
 #contenido-t {
   padding-top: 230px;
-  padding-bottom: 230px;
   width: 95%;
   margin: 0 auto;
 }
@@ -440,7 +491,7 @@ header {
 
 #img-user img {
   width: 20%;
-  height: 20%;
+  height: auto;
   object-fit: cover;
   border: 1px solid black;
   -webkit-box-shadow: 1px 1px 6px black;
@@ -461,7 +512,6 @@ header {
   -webkit-text-stroke: 1.5px #453C69;
   color: white;
   font-size: 2em;
-  text-align: center;
   margin-top: 3.5em;
 
 }
@@ -477,6 +527,7 @@ header {
 
 #info-user input {
   width: 92%;
+  max-width: 510px;
   padding: 1em;
   border-radius: 15px;
   margin-bottom: 2em;
@@ -493,7 +544,7 @@ header {
 #info-user input[type="text"], #info-user input[type="password"]{
   padding-block: 0px;
   padding-inline: 0px;
-  padding: 5px;
+  padding: 10px;
 }
 
 #Hala-madrid {
@@ -502,7 +553,8 @@ header {
 }
 
 #Hala-madrid img {
-  width: 30%;
+  width: 400px;
+  max-width: 400px;
 }
 
 .imagen-h2 {
@@ -533,6 +585,7 @@ header {
   align-items: center;
   display: flex;
   justify-content: space-between;
+
 }
 
 
@@ -543,37 +596,49 @@ header {
   clear: both;
   background-color: #453C69;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   margin-bottom: 0;
-  position: absolute;
-  bottom: 0;
+  text-align: center;
 }
 
-#footer ol {
+#terminos-demas ol {
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+  unicode-bidi: inherit;
+}
+
+#footer ol, footer-r ol {
+  padding: 0;
   display: inline;
+  list-style-type: decimal;
+
+  margin: 0px;
+  text-align: center;
+  padding-right: 3rem;
 }
 
 #medio {
-  position: static;
-  margin: 0 auto;
+
 }
 
-#medio img {
+#medio #redes img {
   width: 15%;
+  max-width: 100px;
   margin-top: 0.2em
 }
 
 #terminos-demas {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 
 }
 
 #terminos-demas ol li {
   display: inline-block;
-  margin: 2px;
-  padding: 4px;
+  margin: 0 0;
+  padding: 3px;
 }
 
 #copyright-terms {
@@ -676,12 +741,17 @@ ol {
     width: 40%;
   }
 
+  #contenido-u form {
+    margin: 0
+  }
+
   #contenido-u h2 {
-    font-size:1.5em;
-    text-align: right;
+    font-size: 1.5em;
+    text-align: left;
     margin-right: 20px;
-    margin-bottom: 1em;
     margin-left: 1em;
+    margin-block-end: 0;
+    margin-block-start: 0;
   }
 
   #img-user {
@@ -698,23 +768,55 @@ ol {
 
   #info-user {
     width: 60%;
-
   }
 
   #Hala-madrid {
     display: none;
   }
 
+  #contenedor-u {
+    min-height: 88vh;
+  }
 
   .cont-h2 {
     display: flex;
     justify-content: space-between;
+    margin: 0 0;
+    margin-top: 15%;
+
   }
 
   .cont-h2 img {
     width: 30%;
-    height: 30%;
+    height: auto;
+    margin-bottom: 30px;
+  }
 
+  #contenido-c {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #parte-abaj {
+    display: block;
+  }
+
+  .info-partido {
+    padding-right: 80%
+  }
+
+  #parte-izq {
+    margin: 0 auto;
+  }
+
+  .informacion-general {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contenido-general {
+    display: flex;
+    justify-content: space-between;
   }
 
 }
@@ -738,10 +840,89 @@ ol {
     display: none;
   }
 
-
-
   #contenido-u .imagen-h2 {
     display: none;
   }
+
+  #contenido-u {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #contenido-u #img-user {
+    width: 30%;
+    text-align: right;
+    margin-top: 11rem;
+  }
+
+  #contenido-u #img-user img {
+    width: 60%;
+    height: auto;
+  }
+
+  #info-user input {
+    width: 92%;
+
+  }
+  .cont-h2 {
+    text-align: center;
+  }
+
+  #info-user h2 {
+    padding-top: 6rem;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 2em;
+  }
+
+  #contenedor-u {
+    min-height: 86vh;
+  }
+
+  #parte-abaj {
+    display: block;
+
+  }
+
+  #parte-dcha {
+    display: block;
+  }
+
+  #parte-abaj {
+    display: none
+  }
+
+  .informacion-general {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #parte-izq {
+    float: left;
+    width: 40%;
+  }
+
+}
+
+@media only screen and (max-width: 470px){
+  #info-user h2 {
+    display: none;
+  }
+
+  #contenido-u #info-user img{
+    width: 20%;
+    height: auto;
+    text-align: center;
+    margin: 20px 13%;
+  }
+
+  footer-r {
+
+  }
+
+
 
 }

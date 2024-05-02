@@ -24,7 +24,7 @@
 
 <body>
 
-<div id="contenedor-u">
+<div id="contenedor">
 
   <header>
     <div class="header-cont">
@@ -62,7 +62,7 @@
               SOCIO</a></li>
             <li class="item-off"><a href="competicion.html" class="link-off" title="Ver competiciones y clasificación">COMPETICIONES</a>
             </li>
-            <li class="item-off, last"><a href="tienda.html" class="link-off" title="Tienda Oficial">TIENDA</a></li>
+            <li class="item-off"><a href="tienda.html" class="link-off" title="Tienda Oficial">TIENDA</a></li>
           </ol>
         </nav>
 
@@ -86,32 +86,47 @@
     </div>
   </header>
 
-
-  <div id="contenido-u">
-      <div id="img-user">
-        <img src="img/nom1.jpg" title="Foto de perfil de usuario" alt="Foto de perfil de usuario">
-        <div id="editado">Cambios realizados satisfactoriamente</div>
+  <div id="contenido-c">
+    <div class="title">
+    <h2>
+      <img src="img/icons8-calendario-50.png">
+      Calendario de los próximos partidos
+    </h2>
+    </div>
+    <div class="contenido-general">
+    <div class="informacion-general">
+    <div id="parte-izq">
+      <div class="pedir-datos">
+        <img src="img/belli.jpg">
+        <p class="info-partido">Info Partido</p>
       </div>
-      <div id="info-user">
-        <span class="cont-h2">
-          <img src="img/nom1.jpg" class="imagen-h2">
-          <h2>¡Hola madridista!</h2>
-        </span>
-        <form method="post" action="usuario.html" class="formuser">
-          <input id="nomuser" type="text" name="nombre-user" title="Introduce un nuevo nombre si quieres cambiarlo"
-                 value="@nomuser" placeholder="nombre de usuario" alt="Editar el nombre de usuario o verlo" required>
-          <input id="correoTlfn" type="text" name="correo-tfno" title="Introduce un nuevo correo o teléfono si quieres cambiarlo"
-                 value="@correo-tfno" placeholder="correo electrónico o contraseña" alt="Editar el correo o teléfono o verlo" required>
-          <input id="contra" type="password" name="contrasenia" title="Introduce una nueva contraseña si quieres cambiarla"
-                 value="@password" placeholder="contraseña" alt="Editar la contraseña o verla" required>
-          <input onclick="comprobarUs()" type="submit" value="Aceptar cambios" title="Editar campos de usuario" alt="Botón de aplicación de cambios">
-        </form>
+      <div class="pedir-datos">
+        <img src="img/belli.jpg">
+        <p class="info-partido">Info Partido</p>
       </div>
-      <div id="Hala-madrid">
-        <img src="img/hala-madrid.png" alt="Foto de Hala madrid" title="!Hala Madrid!">
+      <div class="pedir-datos">
+        <img src="img/belli.jpg">
+        <p class="info-partido">Info Partido</p>
+      </div>
+      <div class="pedir-datos">
+        <img src="img/belli.jpg">
+        <p class="info-partido">Info Partido</p>
       </div>
     </div>
+      </div>
+    <div id="parte-abaj">
+      <h2>
+        <img src="img/icons8-calendario-50.png">
+        Clasificación de la liga
+      </h2>
+      <img src="img/clasi.jpg">
+    </div>
+    <div id="parte-dcha">
+      <img src="img/clasi.jpg">
+    </div>
   </div>
+  </div>
+
 
   <div id="footer">
     <div id="medio">
@@ -132,10 +147,8 @@
   </div>
 </div>
 
-<script
-  src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-  crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
 </script>
 
 <script src="js/app.js">
