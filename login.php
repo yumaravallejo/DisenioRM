@@ -45,24 +45,24 @@
             <!-- Menú normal (Pantalla Grande) -->
             <nav id="nav">
               <ol class="nav-list">
-                <li class="nav-item"><a href="Index.html" class="nav-link" title="Ir al índice">INICIO</a></li>
-                <li class="nav-item"><a href="registro.html" class="nav-link" title="Crear o Unirse a tu cuenta">HAZTE
+                <li class="nav-item"><a href="index.php" class="nav-link" title="Ir al índice">INICIO</a></li>
+                <li class="nav-item"><a href="registro.php" class="nav-link" title="Crear o Unirse a tu cuenta">HAZTE
                   SOCIO</a></li>
-                <li class="nav-item"><a href="competicion.html" class="nav-link" title="Ver competiciones y clasificación">COMPETICIONES</a>
+                <li class="nav-item"><a href="competicion.php" class="nav-link" title="Ver competiciones y clasificación">COMPETICIONES</a>
                 </li>
-                <li class="nav-item"><a href="tienda.html" class="nav-link" title="Tienda Oficial">TIENDA</a></li>
+                <li class="nav-item"><a href="tienda.php" class="nav-link" title="Tienda Oficial">TIENDA</a></li>
               </ol>
             </nav>
 
             <!-- Menú pequeño (Hamburguesa) -->
             <nav class="offScreenMenu" id="burger">
               <ol class="lista-off">
-                <li class="item-off"><a href="Index.html" class="link-off" title="Ir al índice">INICIO</a></li>
-                <li class="item-off"><a href="registro.html" class="link-off" title="Crear o Unirse a tu cuenta">HAZTE
+                <li class="item-off"><a href="index.php" class="link-off" title="Ir al índice">INICIO</a></li>
+                <li class="item-off"><a href="registro.php" class="link-off" title="Crear o Unirse a tu cuenta">HAZTE
                   SOCIO</a></li>
-                <li class="item-off"><a href="competicion.html" class="link-off" title="Ver competiciones y clasificación">COMPETICIONES</a>
+                <li class="item-off"><a href="competicion.php" class="link-off" title="Ver competiciones y clasificación">COMPETICIONES</a>
                 </li>
-                <li class="item-off, last"><a href="tienda.html" class="link-off" title="Tienda Oficial">TIENDA</a></li>
+                <li class="item-off, last"><a href="tienda.php" class="link-off" title="Tienda Oficial">TIENDA</a></li>
               </ol>
             </nav>
 
@@ -78,7 +78,7 @@
                 <li><a href="#" onclick="ponerHola()" title="Carrito de compras"><img class="abajo"
                                                                                       src="img/icons8-carrito-de-compras-26.png"/></a>
                 </li>
-                <li><a href="usuario.html" title="Perfil de usuario"><img
+                <li><a href="usuario.php" title="Perfil de usuario"><img
                   src="img/icons8-usuario-masculino-en-círculo-26.png"/></a></li>
               </ol>
             </div>
@@ -87,9 +87,9 @@
       </header>
 
 
-      <div id="contenido-r">
+      <div id="contenido-r" class="moverArriba">
         <h2>INICIAR SESIÓN</h2>
-        <form method="post" action="index.html" class="formcrear" name="elformulario">
+        <form method="post" action="index.php" class="formcrear" name="elformulario">
           <input type="text" name="nomuser" placeholder="Nombre de usuario" title="Introduce un nombre de usuario"
                  alt="Introduce un nombre de usuario" value="" required><br>
           <span id="passwd_sitio">
@@ -116,13 +116,12 @@
                 <div id="redes"><img src="img/redes.png" /></div>
                 <div id="terminos-demas">
                     <ol>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Security</a></li>
-                        <li><a href="#">Status</a></li>
-                        <li><a href="#">Docs</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Manage Cookies</a></li>
+                      <li><a href="terminos.html">Terms</a></li>
+                      <li><a href="privacy.html">Privacy</a></li>
+                      <li><a href="security.html">Security</a></li>
+                      <li><a href="status.html">Status</a></li>
+                      <li><a href="docs.html">Docs</a></li>
+                      <li><a href="contact.html">Contact</a></li>
                     </ol>
                 </div>
                 <div id="copyright-terms">&copy 2024 Copyright Real Madrid CF</div>

@@ -426,7 +426,6 @@ header {
 }
 
 
-
 #parte-abaj {
   display: none;
   width: 100%;
@@ -434,10 +433,11 @@ header {
 
 #parte-dcha {
   display: none;
+  margin-left: -100px;
 }
 
 .informacion-general {
-  width: 50%;
+  width: 60%;
 }
 
 
@@ -614,10 +614,9 @@ header {
   padding: 0;
   display: inline;
   list-style-type: decimal;
-
   margin: 0px;
   text-align: center;
-  padding-right: 3rem;
+  padding-bottom: 40px;
 }
 
 #medio {
@@ -639,13 +638,17 @@ header {
   display: inline-block;
   margin: 0 0;
   padding: 3px;
+  font-size: 0.8em;
+  text-align: center;
 }
 
 #copyright-terms {
   text-align: center;
   color: white;
   padding-bottom: 10px;
+  font-size: 0.7em;
 }
+
 
 #redes {
   text-align: center;
@@ -654,6 +657,10 @@ header {
 }
 
 /* PIE PARA PÁGINAS PEQUEÑAS ------------------------------------------------- */
+
+.moverArriba {
+  padding-bottom: 120px
+}
 
 #footer-r {
   position: fixed;
@@ -819,6 +826,12 @@ ol {
     justify-content: space-between;
   }
 
+  .contenido-general {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
 }
 
 
@@ -905,6 +918,15 @@ ol {
     width: 40%;
   }
 
+  .contenido-general {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  #parte-izq p {
+    width: 100%;
+  }
+
 }
 
 @media only screen and (max-width: 470px){
@@ -923,6 +945,23 @@ ol {
 
   }
 
+  #parte-izq {
+    margin-left: -25px
+  }
 
+  #parte-izq p {
+    width: 2em;
+  }
+
+  #contenido-c h2 {
+    text-align: left;
+    padding-left: 10px
+  }
+
+  #logo-madrid {
+    margin: 0 0;
+  } 
+
+  
 
 }
