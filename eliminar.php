@@ -1,3 +1,27 @@
+<?php
+  //Incluimos la conexión con la base de datos
+  include("conexion_db.php");
+
+  $consulta = "DELETE FROM usuarios 
+                WHERE nomusuario = '".$_SESSION['name']."' AND contrausuario = '".$_SESSION['password']."'";
+
+  //Si pulso el botón "eliminar"
+  if (isset($_POST['eliminar'])) {
+    $resultado = mysqli_query($conex, $consulta);
+    if ($resultado) {
+      session_destroy();
+    } else {
+      echo "Algo ha salido mal";
+    }
+  } else if(isset($_POST['cancelar'])) {
+    header("Location:index.php");
+    exit;
+  } 
+  
+
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="es">
 
@@ -24,7 +48,7 @@
 
 <body>
 
-  <div id="contenedor">
+  <div id="contenedor-u">
 
     <header>
       <div class="header-cont">
@@ -48,6 +72,8 @@
           <nav id="nav">
             <ol class="nav-list">
               <li class="nav-item"><a href="index.php" class="nav-link" title="Ir al índice">INICIO</a></li>
+              <li class="nav-item"><a href="registro.php" class="nav-link" title="Crear o Unirse a tu cuenta">HAZTE
+                  SOCIO</a></li>
               <li class="nav-item"><a href="competicion.php" class="nav-link"
                   title="Ver competiciones y clasificación">COMPETICIONES</a>
               </li>
@@ -59,10 +85,12 @@
           <nav class="offScreenMenu" id="burger">
             <ol class="lista-off">
               <li class="item-off"><a href="index.php" class="link-off" title="Ir al índice">INICIO</a></li>
+              <li class="item-off"><a href="registro.php" class="link-off" title="Crear o Unirse a tu cuenta">HAZTE
+                  SOCIO</a></li>
               <li class="item-off"><a href="competicion.php" class="link-off"
                   title="Ver competiciones y clasificación">COMPETICIONES</a>
               </li>
-              <li class="item-off last" ><a href="tienda.php" class="link-off" title="Tienda Oficial">TIENDA</a></li>
+              <li class="item-off, last"><a href="tienda.php" class="link-off" title="Tienda Oficial">TIENDA</a></li>
             </ol>
           </nav>
 
@@ -86,52 +114,22 @@
       </div>
     </header>
 
-    <div id="contenido-c">
-      <div class="title">
-        <h2>
-          <img src="img/icons8-calendario-50.png">
-          Próximos partidos
-        </h2>
-      </div>
-      <div class="contenido-general">
-        <div class="informacion-general">
-          <div id="parte-izq">
-            <div class="pedir-datos">
-              <img src="img/belli.jpg">
-              <p class="info-partido">Info Partido</p>
-            </div>
-            <div class="pedir-datos">
-              <img src="img/belli.jpg">
-              <p class="info-partido">Info Partido</p>
-            </div>
-            <div class="pedir-datos">
-              <img src="img/belli.jpg">
-              <p class="info-partido">Info Partido</p>
-            </div>
-            <div class="pedir-datos">
-              <img src="img/belli.jpg">
-              <p class="info-partido">Info Partido</p>
-            </div>
-          </div>
-        </div>
-        <div id="parte-abaj">
-          <h2>
-            <img src="img/icons8-calendario-50.png">
-            Clasificación
-          </h2>
-          <img src="img/clasi.jpg">
-        </div>
-        <div id="parte-dcha">
-          <img src="img/clasi.jpg">
+
+    <div id="contenido-e">
+      <div class="interno">
+        <h2>¿Estás seguro de que quieres eliminar tu cuenta?</h2>
+        <div class="botones">
+          <form action="index.php" method="post">
+          <input type="reset" value="Cancelar" name="cancelar" title="La única decisión correcta" class="cancelar pointer">
+          <input type="submit" value="Eliminar" name="eliminar" title="Si pulsas eres del barca" class="completar pointer">
+        </form>
         </div>
       </div>
     </div>
 
-
-
-    <div id="footer">
+    <div id="footer-r">
       <div id="medio">
-        <div id="redes"><img src="img/redes.png"/></div>
+        <div id="redes"><img src="img/redes.png" /></div>
         <div id="terminos-demas">
           <ol>
             <li><a href="terminos.html">Terms</a></li>

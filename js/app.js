@@ -48,8 +48,30 @@ function ver_password() {
     : '<input type="password" name="input_pass" value="">'
   ;
 
-  document.elformulario.input_pass.value = passwd_valor;
+  document.getElementById('passwd_sitio').innerHTML
+    = (document.elformulario.input_ver.checked)
+    ? '<input type="text"     name="input_pass" value="">'
+    : '<input type="password" name="input_pass" value="">'
+  ;
 
+  document.elformulario.input_pass.value = passwd_valor;
 }
+
+function mostrarContrasenia(inputId, eyeId) {
+  var passwordInput = document.getElementById(inputId);
+  var eyeIcon = document.getElementById(eyeId);
+  var state = eyeIcon.getAttribute("data-state") === "true";
+
+  if (state) {
+      passwordInput.setAttribute("type", "password");
+      eyeIcon.className = "fa fa-eye fa-2x pointer";
+      eyeIcon.setAttribute("data-state", "false");
+  } else {
+      passwordInput.setAttribute("type", "text");
+      eyeIcon.className = "fa fa-eye-slash fa-2x pointer";
+      eyeIcon.setAttribute("data-state", "true");
+  }
+}
+
 
 
