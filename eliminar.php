@@ -1,7 +1,9 @@
 <?php
+session_start();
   //Incluimos la conexión con la base de datos
   include("conexion_db.php");
 
+  $cons = 
   $consulta = "DELETE FROM usuarios 
                 WHERE nomusuario = '".$_SESSION['name']."' AND contrausuario = '".$_SESSION['password']."'";
 

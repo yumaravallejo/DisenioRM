@@ -1,5 +1,5 @@
 <?php
-    $host = "localhost";
+    $host = "database";
     $user = "root";
     $pw = "";
     $dbname = "realmadrid";

@@ -32,6 +32,14 @@ body {
   flex: 1;
 }
 
+.contrase {
+  position: relative;
+}
+
+.span-ojo {
+  width: 20%;
+}
+
 /* HEADER -------- CABEZA DE PÁGINA ----- */
 header {
   position: static;
@@ -362,15 +370,14 @@ header {
 #ojillo, #ojo2 {
   color: black;
   position: absolute;
-  padding-right: 28%; 
-  width: 96%;
+  left: 16px
+
 }
 
 #ojito {
   color: black;
   position: absolute;
-  padding-right: 28%; 
-  width: 96%;
+  left: 16px
 }
 
 .contrase {
@@ -804,6 +811,7 @@ header {
   width: 60%;
   text-align: justify;
   max-width: 600px;
+  min-height: 49.5vh;
 }
 
 #contenido-l {
@@ -814,9 +822,27 @@ header {
   max-width: 600px;
 }
 
+/*SPINNER ===================================================================================*/
+.spinner {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #453C69;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+}
+}
+
 /* REGISTRO ============================================================================= */
 
-.registro {}
 
 /* CLASES Y GENERALES */
 a {
@@ -872,27 +898,41 @@ ol {
 }
 
 .ok {
-
   color: #5D6C55;
 }
 
-.imagen {
-
-}
 
 .imagen img {
   width: 5em;
-
 }
 
 .mensaje {
   display: flex;
-  justify-content:center;
+  flex-direction:column ;
   position: absolute;
   bottom: 17%;
   width: 100%;
   align-items: center;
   text-align: center;
+}
+
+
+.mensaje2 {
+  display: flex;
+  flex-direction:column ;
+  position: absolute;
+  bottom: 14%;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.frases {
+  display: flex;
+}
+
+.redirigir {
+  color: #df8d31;
 }
 
 .bad {
@@ -916,14 +956,15 @@ ol {
 .ok2 {
   text-align: center;
   color: #5D6C55;
-  position: absolute;
-  bottom: 23%;
+  display: flex;
+  flex-direction: column;
+  bottom: 18%;
   width: 100%;
 }
 
 .bad2 {
   position: absolute;
-  bottom: 23%;
+  bottom: 18%;
   text-align: center;
   color: #8b4343;
   width: 100%;
@@ -1192,8 +1233,5 @@ ol {
 
   #logo-madrid {
     margin: 0 0;
-  } 
-
-  
-
+  }
 }

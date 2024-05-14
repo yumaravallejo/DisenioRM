@@ -13,7 +13,7 @@ if (isset($_POST['continuar']))
       //Guardamos la información del usuario en variables
       $name =trim($_POST['nomuser']);
       $email = trim($_POST['correoTlfn']);
-      $password = $_POST["input_pass"];
+      $password = trim($_POST["input_pass"]);
       
       //Creamos la consulta INSERT de mysql
       $consulta = "INSERT INTO usuarios (nomusuario, emailusuario, contrausuario) 
@@ -23,27 +23,34 @@ if (isset($_POST['continuar']))
 
       //Comprobamos que todo haya salido bien
       if ($resultado) {
-        ?>
-            <h3 class="ok">¡Bienvenido madridista!</h3>
-        <?php
-        //Iniciamos la sesión
         $_SESSION['inicio'] = true;
         $_SESSION['name'] = $name;
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
-      } else {
         ?>
-            <h3 class="bad">¡Ups ha ocurrido un error!</h3>
+            <div class="mensaje2">
+                <div class="frases">
+                    <p class="imagen"><img src="img/bandera.gif" alt="Bandera Real Madrid"></p>
+                    <h3 id="welcome" class="ok2">¡Bienvenido madridista!</h3>
+                    </div>
+                    <span class="redirigir">Redirigiendo...</span>
+            </div>
         <?php
-      }
-  } else {  //Si no hay nombre, correo, etc...
+        //Iniciamos la sesión
+        
+        } else {
+            ?>
+                <h3 class="bad2">¡Ups ha ocurrido un error!</h3>
+            <?php
+        }
+    } else {  //Si no hay nombre, correo, etc...
     ?>
-        <h3 class="bad">Por favor complete los campos</h3>
+        <h3 class="bad2">Por favor complete los campos</h3>
     <?php
-  }
+}
 
 /*
-      
+
 .ok {
   text-align: center;
   color: #5D6C55;
@@ -63,7 +70,13 @@ if (isset($_POST['continuar']))
 
 */
 ?>
-
+<script>
+if(document.getElementsByClassName("ok2")[0] && document.getElementsByClassName("ok2")[0].textContent == "¡Bienvenido madridista!"){
+      setTimeout(function() { //Esto hará que se dispare la función los 3000 ms después  de que aparezca el bienvenido
+      window.location.href = 'index.php?pages=main';
+      }, 3000);
+  }
+</script>
 
 <!doctype html>
 <html class="no-js" lang="es" xmlns="http://www.w3.org/1999/html">
@@ -164,44 +177,36 @@ if (isset($_POST['continuar']))
             <form action="registro.php" class="formcrear" method="post" name="elformulario">
                 <input alt="Introduce un nombre de usuario" name="nomuser" placeholder="Nombre de usuario" required
                     title="Introduce un nombre de usuario" type="text" value=""><br>
+
                 <input alt="Introduce un correo o teléfono" name="correoTlfn" placeholder="Correo electrónico" required
                     title="Introduce un correo o teléfono" type="email" value=""><br>
+
                 <div class="contrase">
                     <i id="ojillo" class="fa fa-eye fa-2x" onclick="mostrarContrasenia('input_pass', 'ojillo')"></i>
-                    <input id="input_pass" alt="Introduce una contraseña" name="input_pass" placeholder="Contraseña" required
-                        title="Introduce una contraseña" type="password" value="" >
+                    <input id="input_pass" alt="Introduce una contraseña" name="input_pass" placeholder="Contraseña"
+                        required title="Introduce una contraseña" type="password" value="" maxlength="15" minlength="6">
                 </div>
+
                 <div class="contrase">
-                    <i id="ojo2" class="fa fa-eye fa-2x pointer abajo"onclick="mostrarContrasenia('input_pass2', 'ojo2')"></i>
-                    <input id="input_pass2" alt="Introduce una contraseña" name="input_pass" placeholder="Contraseña" required
-                        title="Introduce una contraseña" type="password" value="">
+                    <i id="ojo2" class="fa fa-eye fa-2x pointer abajo"
+                        onclick="mostrarContrasenia('input_pass2', 'ojo2')"></i>
+                    <input id="input_pass2" alt="Confirmar contraseña" name="input_pass"
+                        placeholder="Confirmar contraseña" required title="Confirmar contraseña" type="password"
+                        value="" maxlength="15" minlength="6">
                 </div>
                 <input class="boton-cont pointer" name="continuar" type="submit" value="continuar">
             </form>
 
             <div class="socio">
                 <span>¿Ya eres socio? </span>
-                <a  class="enlace" href="login.php">Unirse</a>
+                <a class="enlace" href="login.php">Unirse</a>
             </div>
 
         </div>
 
-        <div class="navbar navbar-fixed-bottom" id="footer-r">
-            <div id="medio">
-                <div id="redes"><img src="img/redes.png" /></div>
-                <div id="terminos-demas">
-                    <ol>
-                        <li><a href="terminos.html">Terms</a></li>
-                        <li><a href="privacy.html">Privacy</a></li>
-                        <li><a href="security.html">Security</a></li>
-                        <li><a href="status.html">Status</a></li>
-                        <li><a href="docs.html">Docs</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ol>
-                </div>
-                <div id="copyright-terms">&copy 2024 Copyright Real Madrid CF</div>
-            </div>
-        </div>
+        <?php
+            include("footer.php");
+        ?>
     </div>
 
 

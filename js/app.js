@@ -73,5 +73,26 @@ function mostrarContrasenia(inputId, eyeId) {
   }
 }
 
+function mostrarContrasenia(inputId, checkId) {
+  var passwordInput = document.getElementById(inputId);
+  var checkIcon = document.getElementById(checkId);
+  var state = checkIcon.getAttribute("data-state-c") === "true";
+
+  if (state) {
+      passwordInput.setAttribute("type", "password");
+      checkIcon.setAttribute("data-state-c", "false");
+  } else {
+      passwordInput.setAttribute("type", "text");
+      checkIcon.setAttribute("data-state-c", "true");
+  }
+}
+
+
+//var globales(pueden llamarse desde cualquier parte)
+//let locales
+//const constantes
+
+//onKeyUp --> editar, para cuando se cambie el texto
+
 
 

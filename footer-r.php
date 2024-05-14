@@ -1,4 +1,4 @@
-<div id="footer">
+<div class="navbar navbar-fixed-bottom" id="footer-r">
     <div id="medio">
         <div id="redes"><img src="img/redes.png" /></div>
         <div id="terminos-demas">
