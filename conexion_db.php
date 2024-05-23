@@ -1,8 +1,8 @@
 <?php
-    $host = "database";
+    $host = "monorail.proxy.rlwy.net:27611";
     $user = "root";
-    $pw = "";
-    $dbname = "realmadrid";
+    $pw = "CgVfMyDQsevoBuNralOzWuJcWuqSmdrm";
+    $dbname = "railway";
 
     $conex = mysqli_connect($host, $user, $pw, $dbname);
 
