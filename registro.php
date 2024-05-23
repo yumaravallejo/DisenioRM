@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Incluímos que se conecte a la base da datos
 include("conexion_db.php");
 
@@ -33,7 +34,7 @@ if (isset($_POST['continuar']))
                     <p class="imagen"><img src="img/bandera.gif" alt="Bandera Real Madrid"></p>
                     <h3 id="welcome" class="ok2">¡Bienvenido madridista!</h3>
                     </div>
-                    <span class="redirigir">Redirigiendo...</span>
+                    <div class="spinner"></div>
             </div>
         <?php
         //Iniciamos la sesión
