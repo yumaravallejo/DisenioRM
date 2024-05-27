@@ -28,29 +28,6 @@ session_start();
   <script src="js/app.js">
   </script>
 
-<script>
-  //Esto cogerá el elemento 0 que tenga la clase ok (solo lo tiene esa) además de comprobar que el texto es ese para asegurar
-  // if(document.getElementsByClassName("ok")[0] && document.getElementsByClassName("ok")[0].textContent == "¡Bienvenido madridista!"){
-  //     setTimeout(function() { //Esto hará que se dispare la función los 3000 ms después  de que aparezca el bienvenido
-  //     window.location.href = 'index.php? pages=main';
-  //     }, 3000);
-  // }
-
-
-  // El fetch te sirve para buscar, (postman como  ejemplo visual)
-  // fetch('login.php', {
-  //     method: 'POST',
-  //     headers: {
-  //         'Content-Type': 'application/x-www-form-urlencoded'
-  //     },
-  //     body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
-  // })
-
-
-</script>
-
-
-
 </head>
 
 <body>
@@ -58,11 +35,7 @@ session_start();
 <?php
 include("header.php");
 if (isset($_SESSION['inicio'])) {
-  if(isset($_GET["pages"])){
-    include($_GET["pages"].".php");
-  }else{
-    include("login.php");
-  }
+    include("main.php");
 } else {
   include("login.php");
 }
@@ -78,6 +51,26 @@ include("footer.php");
   crossorigin="anonymous">
 </script>
 
+<script>
+  //Esto cogerá el elemento 0 que tenga la clase ok (solo lo tiene esa) además de comprobar que el texto es ese para asegurar
+  if(document.getElementsByClassName("ok")[0] && document.getElementsByClassName("ok")[0].textContent == "¡Bienvenido madridista!"){
+      setTimeout(function() { //Esto hará que se dispare la función los 3000 ms después  de que aparezca el bienvenido
+      window.location.href = 'index.php? pages=main';
+      }, 3000);
+  }
+
+
+  // El fetch te sirve para buscar, (postman como  ejemplo visual)
+  // fetch('login.php', {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/x-www-form-urlencoded'
+  //     },
+  //     body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+  // })
+
+
+</script>
 
 
 </body>

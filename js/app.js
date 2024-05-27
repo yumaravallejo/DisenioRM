@@ -87,6 +87,9 @@ function mostrarContrasenia(inputId, checkId) {
   }
 }
 
+function cancelar() {
+  window.location.href = 'index.php? pages=main';
+}
 
 //var globales(pueden llamarse desde cualquier parte)
 //let locales

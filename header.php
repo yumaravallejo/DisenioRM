@@ -1,12 +1,5 @@
 <header>
     <div class="header-cont">
-        <div class="cabecera">
-            <div id="logo-madrid"><img src="img/escudo.png"></div>
-            <div id="texto-madrid">
-                <h1>REAL MADRID CF</h1>
-            </div>
-            <div id="logo-adidas"><img src="img/adidog.png"></div>
-        </div>
         <div id="menu-in">
             <!-- Icono de hamburguesa (oculto) -->
             <div class="hamburguer-menu" id="burger-menu" onclick="mostrarMenu()">

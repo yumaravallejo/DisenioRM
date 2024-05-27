@@ -3,24 +3,22 @@ session_start();
   //Incluimos la conexión con la base de datos
   include("conexion_db.php");
 
-  $cons = 
-  $consulta = "DELETE FROM usuarios 
-                WHERE nomusuario = '".$_SESSION['name']."' AND contrausuario = '".$_SESSION['password']."'";
+  $nombre = $_SESSION['name'];
+  $pwd = $_SESSION['password'];
+
+  $consulta2 = "DELETE FROM usuarios WHERE nomusuario = '$nombre' AND contrausuario = '$pwd'";
 
   //Si pulso el botón "eliminar"
   if (isset($_POST['eliminar'])) {
-    $resultado = mysqli_query($conex, $consulta);
-    if ($resultado) {
+    $resultado2 = mysqli_query($conex, $consulta2);
+
+    if ($resultado2) {
       session_destroy();
+      header("Location:index.php");
     } else {
       echo "Algo ha salido mal";
     }
-  } else if(isset($_POST['cancelar'])) {
-    header("Location:index.php");
-    exit;
-  } 
-  
-
+  }  
 
 ?>
 
@@ -34,12 +32,6 @@ session_start();
   <link rel="stylesheet" href="css/style.css">
   <meta name="description" content="">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
-
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.png">
@@ -52,100 +44,22 @@ session_start();
 
   <div id="contenedor-u">
 
-    <header>
-      <div class="header-cont">
-        <div class="cabecera">
-          <div id="logo-madrid"><img src="img/escudo.png"></div>
-          <div class="en-blanco"></div>
-          <div id="texto-madrid">
-            <h1>REAL MADRID CF</h1>
-          </div>
-          <div id="logo-adidas"><img src="img/adidog.png"></div>
-        </div>
-        <div id="menu-in">
-          <!-- Icono de hamburguesa (oculto) -->
-          <div class="hamburguer-menu" id="burger-menu" onclick="mostrarMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </div>
-
-          <!-- Menú normal (Pantalla Grande) -->
-          <nav id="nav">
-            <ol class="nav-list">
-              <li class="nav-item"><a href="index.php" class="nav-link" title="Ir al índice">INICIO</a></li>
-              <li class="nav-item"><a href="registro.php" class="nav-link" title="Crear o Unirse a tu cuenta">HAZTE
-                  SOCIO</a></li>
-              <li class="nav-item"><a href="competicion.php" class="nav-link"
-                  title="Ver competiciones y clasificación">COMPETICIONES</a>
-              </li>
-              <li class="nav-item"><a href="tienda.php" class="nav-link" title="Tienda Oficial">TIENDA</a></li>
-            </ol>
-          </nav>
-
-          <!-- Menú pequeño (Hamburguesa) -->
-          <nav class="offScreenMenu" id="burger">
-            <ol class="lista-off">
-              <li class="item-off"><a href="index.php" class="link-off" title="Ir al índice">INICIO</a></li>
-              <li class="item-off"><a href="registro.php" class="link-off" title="Crear o Unirse a tu cuenta">HAZTE
-                  SOCIO</a></li>
-              <li class="item-off"><a href="competicion.php" class="link-off"
-                  title="Ver competiciones y clasificación">COMPETICIONES</a>
-              </li>
-              <li class="item-off, last"><a href="tienda.php" class="link-off" title="Tienda Oficial">TIENDA</a></li>
-            </ol>
-          </nav>
-
-          <!-- Barra de búsqueda -->
-          <div id="busq-user-car">
-            <ol>
-              <li>
-                <form>
-                  <input type="text" name="busqueda" id="busqueda" alt="buscar" title="Buscar Productos/Apartado"
-                    placeholder="Buscar...">
-                </form>
-              </li>
-              <li><a href="#" onclick="ponerHola()" title="Carrito de compras"><img class="abajo"
-                    src="img/icons8-carrito-de-compras-26.png" /></a>
-              </li>
-              <li><a href="usuario.php" title="Perfil de usuario"><img
-                    src="img/icons8-usuario-masculino-en-círculo-26.png" /></a></li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </header>
+    <?php include("header.php");  ?>
 
 
     <div id="contenido-e">
       <div class="interno">
         <h2>¿Estás seguro de que quieres eliminar tu cuenta?</h2>
         <div class="botones">
-          <form action="index.php" method="post">
-          <input type="reset" value="Cancelar" name="cancelar" title="La única decisión correcta" class="cancelar pointer">
+          <form action="eliminar.php" method="post">
+          <input type="submit" value="Cancelar" name="cancelar" title="La única decisión correcta" class="cancelar pointer" onclick="cancelar()">
           <input type="submit" value="Eliminar" name="eliminar" title="Si pulsas eres del barca" class="completar pointer">
         </form>
         </div>
       </div>
     </div>
 
-    <div id="footer-r">
-      <div id="medio">
-        <div id="redes"><img src="img/redes.png" /></div>
-        <div id="terminos-demas">
-          <ol>
-            <li><a href="terminos.html">Terms</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="security.html">Security</a></li>
-            <li><a href="status.html">Status</a></li>
-            <li><a href="docs.html">Docs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ol>
-        </div>
-        <div id="copyright-terms">&copy 2024 Copyright Real Madrid CF</div>
-      </div>
-    </div>
-  </div>
+    <?php include("footer-r.php"); ?>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">

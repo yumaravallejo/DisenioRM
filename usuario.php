@@ -115,8 +115,13 @@ if (!$conex) {
                     name="cambio" alt="Botón de aplicación de cambios" id="cambio" class="in-final pointer aceptarCambios">
             </form>
             <div class="eliminar">
-                ¿Quieres darte de baja?
+                <a href="cerrar.php" id="pedro">Cerrar Sesión</a>
                 <a href="eliminar.php" id="paco">Eliminar cuenta</a>
+            </div>
+
+            <div class="eliminar-off">
+                <a href="cerrar.php" id="pedro" title="Cerrar Sesión"><img src="img/cerrar.png"></a>
+                <a href="eliminar.php" id="paco" title="Eliminar Cuenta"><img src="img/basura.png"></a>
             </div>
         </div>
         <div id="Hala-madrid">
