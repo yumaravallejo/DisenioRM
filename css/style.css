@@ -431,7 +431,7 @@ header {
   padding-top: 7vh;
   width: 100%;
   text-align: center;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 .title {
@@ -445,35 +445,25 @@ header {
   background-color: #453C69;
 }
 
+
 .pedir-datos {
   display: flex;
-  justify-content: flex-start;
-  width: 100%;
+  justify-content: center;
+  border-radius: 8px;
   margin-bottom: 1em;
-  height: 10em;
+  -webkit-box-shadow: 1px 1px 10px black;
+  background-color: #F3F3F3;
+  padding: 10px 40px;
+  
+}
+
+.pedir-datos img {
+  width:80px;
 }
 
 #contenido-c h2 img {
   width: 1em;
   padding-top: 4px;
-}
-
-#contenido-c .pedir-datos img {
-  border-radius: 7px;
-  border: 1px solid black;
-}
-
-#parte-izq {
-  margin-left: 5%;
-  float: left;
-  width: 60%;
-
-}
-
-#parte-abaj {
-  float: left;
-  width: 30%;
-  margin-right: 5%;
 }
 
 #parte-abaj h2 {
@@ -482,22 +472,24 @@ header {
   margin-bottom: 10px
 }
 
-#parte-abaj img {
+.info-medio {
+  padding-top: 30px;
+  margin: 0 15px
+}
 
+#parte-abaj img {
   left: 50px;
 }
 
-.info-partido {
-  text-align: left;
-  width: 60%;
-  height: auto;
-  padding: 20px;
-  margin-left: 10px;
-  border-radius: 8px;
-  background-color: #F3F3F3;
-  -webkit-box-shadow: 1px 1px 10px black;
+.info-medio {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
+.fecha-partido {
+  font-size: 0.7em;
+}
 
 #parte-abaj {
   display: none;
@@ -509,10 +501,9 @@ header {
   margin-left: -100px;
 }
 
-.informacion-general {
-  width: 60%;
+#contenido-general {
+  padding:20px
 }
-
 
 
 /* CONTENIDO TIENDA ------------------------------------------------- */
@@ -588,14 +579,15 @@ header {
 #img-user {
   text-align: center;
   width: 20%;
+  padding-top: 65px
 }
 
 #info-user {
   text-align: center;
   width: 30%;
   border: 2px solid transparent;
-  margin: 0 auto;
   margin: 0 15px;
+  margin-top: 100px;
 }
 
 #info-user h2{
@@ -686,11 +678,6 @@ header {
 }
 
 /* CONTENIDO ELIMINAR ------------------------------------------------- */
-
-#contenido-e a {
-  color: #453C69;
-  
-}
 
 #contenido-e h2 {
   color: #453C69;
@@ -1005,9 +992,82 @@ ol {
   text-decoration: none;
 }
 
+.boton-cancelar {
+  text-decoration:none;
+  border: 2px solid gray;
+  border-radius: 100px ;
+  color: white;
+  padding: 10px 40px;
+  transition: background-color 0.4s, color 0.4s;
+  background-color: #b3b3b3;
+}
+
+.boton-cancelar:hover, .boton-cancelar:focus {
+  background-color: #939393;
+} 
+
+#mmas {
+  border: 1px solid grey;
+  background-color: rgb(225, 225, 225);
+  transition: background-color 0.3s;
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: block;
+}
+
+#mmas:hover {
+  background-color: #b3b3b3;
+}
+
+#mmenos {
+  border: 1px solid grey;
+  background-color: rgb(225, 225, 225);
+  transition: background-color 1s;
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: none;
+}
+
+#pagi2 {
+  display: none;
+}
+
+#pagi1 {
+  display: block;
+}
+
+#mmenos:hover {
+  background-color: #b3b3b3;
+}
+
+
 /* PONER LAS MEDIA QUERYS AL FINAL PARA QUE NO HAYA FALLOS */
 /* NUNCA PONER PÍXELES EN @MEDIA --> porque va por resolución de la pantalla */
-@media only screen and (max-width: 56.219rem){
+@media only screen and (max-width:899.504px){
+  #pagi2 {
+    display: none;
+  }
+
+  .info-partido {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .pedir-datos {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 20px
+  }
+  
+  .info-partido img {
+    margin: 10px
+  }
+
   .eliminar-off{
     display: block;
     display: flex;
@@ -1128,28 +1188,19 @@ ol {
     display: block;
   }
 
-  .info-partido {
-    padding-right: 80%
-  }
 
   #parte-izq {
     margin: 0 auto;
   }
 
-  .informacion-general {
-    margin: 0 auto;
-    text-align: center;
+  .pedir-datos {
+    padding: 10px 40px;
   }
 
-  .contenido-general {
-    display: flex;
-    justify-content: space-between;
-  }
 
   .contenido-general {
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
 
 
@@ -1157,7 +1208,27 @@ ol {
 }
 
 
-@media only screen and (min-width:56.219rem) {
+@media only screen and (min-width:899.504px) {
+  #pagi1 {
+    display: none;
+  }
+
+  #pagi2 {
+    display: block;
+  }
+
+  #mmas {
+    display: none;
+  }
+
+  #mmenos {
+    display: none;
+  }
+
+ #contenido-c {
+  margin-bottom: 20px
+ }
+
   #nav {
     display: block;
   }
@@ -1230,62 +1301,15 @@ ol {
     display: none
   }
 
-  .informacion-general {
+
+  .contenido-general {
     display: flex;
     justify-content: space-evenly;
   }
 
-  #parte-izq {
-    float: left;
-    width: 40%;
-  }
-
-  .contenido-general {
-    display: flex;
-    justify-content: flex-start;
-  }
-
-  #parte-izq p {
-    width: 100%;
-  }
 
   #contenido-u {
     padding-right:9.375rem;
   }
 
-}
-
-@media only screen and (max-width: 29.375rem){
-  #info-user h2 {
-    display: none;
-  }
-
-  #contenido-u {
-    margin: 0 auto;
-  }
-
-  #contenido-u #info-user img{
-    width: 20%;
-    height: auto;
-    text-align: center;
-    margin: 20px 13%;
-  }
-
-
-  #parte-izq {
-    margin-left: -25px
-  }
-
-  #parte-izq p {
-    width: 2em;
-  }
-
-  #contenido-c h2 {
-    text-align: left;
-    padding-left: 10px
-  }
-
-  #logo-madrid {
-    margin: 0 0;
-  }
 }

@@ -1,5 +1,7 @@
-<?php session_start(); 
+<?php 
+session_start(); 
 include ("conexion_db.php");
+
 function obtenerPartidos($conex) {
     $consulta = "SELECT fecha_partido, id_local, id_visitante, nom_competicion FROM partidos";
     $resultado = $conex->query($consulta);
@@ -13,40 +15,29 @@ function obtenerPartidos($conex) {
     return $partidos;
 }
 
-function obtenerEquipo($id) {
-  // Conexión a la base de datos (reemplaza 'host', 'usuario', 'contraseña' y 'basededatos' con tus propios valores)
-  $conexion = new mysqli('host', 'usuario', 'contraseña', 'basededatos');
+function obtenerEquipo($id, $conex) {
+    // Preparar la consulta SQL para obtener la imagen_equipo según el ID proporcionado
+    $consulta = $conex->prepare("SELECT nomequipo, img_equipo FROM equipos WHERE idequipos = ?");
+    $consulta->bind_param("i", $id); // "i" indica que el parámetro es de tipo entero
+    $consulta->execute();
 
-  // Verificar la conexión
-  if ($conexion->connect_error) {
-      die("Error de conexión: " . $conexion->connect_error);
-  }
+    // Obtener el resultado de la consulta
+    $resultado = $consulta->get_result();
 
-  // Preparar la consulta SQL para obtener la imagen_equipo según el ID proporcionado
-  $consulta = $conexion->prepare("SELECT img_equipo FROM nombre_tabla WHERE id = ?");
-  $consulta->bind_param("i", $id); // "i" indica que el parámetro es de tipo entero
-  $consulta->execute();
+    // Verificar si se encontró algún resultado
+    if ($resultado->num_rows > 0) {
+        // Obtener la fila de resultados como un arreglo asociativo
+        $fila = $resultado->fetch_assoc();
+        // Devolver la fila completa
+        return $fila;
+    } else {
+        // Si no se encontraron resultados, devolver un valor por defecto o un mensaje de error
+        return ["nomequipo" => "Equipo desconocido", "img_equipo" => "img/default.png"];
+    }
 
-  // Obtener el resultado de la consulta
-  $resultado = $consulta->get_result();
-
-  // Verificar si se encontró algún resultado
-  if ($resultado->num_rows > 0) {
-      // Obtener la fila de resultados como un arreglo asociativo
-      $fila = $resultado->fetch_assoc();
-      
-      // Devolver el valor del campo img_equipo
-      return $fila['img_equipo'];
-  } else {
-      // Si no se encontraron resultados, devolver un valor por defecto o un mensaje de error
-      return "No se encontró ninguna imagen para el ID proporcionado";
-  }
-
-  // Cerrar la conexión y liberar recursos
-  $consulta->close();
-  $conexion->close();
+    // Cerrar la consulta
+    $consulta->close();
 }
-
 
 ?>
 <!doctype html>
@@ -78,9 +69,8 @@ function obtenerEquipo($id) {
   <div id="contenedor">
 
     <?php
-      if (isset($_SESSION['inicio'])) {
         include("header.php");
-        $productos = obtenerProductos($conex);
+        $partidos = obtenerPartidos($conex);
     ?>
     <div id="contenido-c">
       <div class="title">
@@ -92,16 +82,54 @@ function obtenerEquipo($id) {
       <div class="contenido-general">
         <div class="informacion-general">
           <div id="parte-izq">
+            <div id="pagi1">
             <?php
+            for ($i = 0; $i < 5 && $i < count($partidos); $i++) {
+                $partido = $partidos[$i];
+                $equipoLocal = obtenerEquipo($partido['id_local'], $conex);
+                $equipoVisitante = obtenerEquipo($partido['id_visitante'], $conex);
             ?>
-            <div class="pedir-datos">
-              <img src="img/belli.jpg">
-              <p class="info-partido">
+            <div class="pedir-datos">        
+                  <!-- Imagen 1 -->
+                  <img src="<?php echo $equipoLocal['img_equipo']; ?>" alt="<?php echo $equipoLocal['nomequipo'];?>" title="<?php echo $equipoLocal['nomequipo'];?>">
+                <div class="info-medio">
+                  VS <br>
+                  <p class="fecha-partido"><?php echo $partido['fecha_partido']; ?></p>
+                 </div>
+                   <!-- Imagen 2 -->
+                   <img src="<?php echo $equipoVisitante['img_equipo']; ?>" alt="<?php echo $equipoVisitante['nomequipo']; ?>" title="<?php echo $equipoVisitante['nomequipo'];?>"> 
+            </div>
 
-              </p>
-            </div><?php 
-                
+            <?php 
+            }
             ?>
+            <div id="mmas" class="pointer botoncin1" onclick="mostrarMas()">Mostrar más</div>
+              
+            </div>
+            <div id="pagi2">
+            <?php
+            foreach ($partidos as $partido) {
+                $equipoLocal = obtenerEquipo($partido['id_local'], $conex);
+                $equipoVisitante = obtenerEquipo($partido['id_visitante'], $conex);
+            ?>
+            <div class="pedir-datos">        
+                  <!-- Imagen 1 -->
+                  <img src="<?php echo $equipoLocal['img_equipo']; ?>" alt="<?php echo $equipoLocal['nomequipo'];?>" title="<?php echo $equipoLocal['nomequipo'];?>">
+                <div class="info-medio">
+                  VS <br>
+                  <p class="fecha-partido"><?php echo $partido['fecha_partido']; ?></p>
+                 </div>
+                   <!-- Imagen 2 -->
+                   <img src="<?php echo $equipoVisitante['img_equipo']; ?>" alt="<?php echo $equipoVisitante['nomequipo']; ?>" title="<?php echo $equipoVisitante['nomequipo'];?>"> 
+            </div>
+
+            <?php 
+            }
+            ?>
+            <div id="mmenos" class="pointer botoncin" onclick="mostrarMenos()">Mostrar menos</div>
+
+            
+            </div>
             
           </div>
         </div>
@@ -118,24 +146,18 @@ function obtenerEquipo($id) {
       </div>
     </div>
 
-
-
     <?php
       include("footer.php");
-    } else {
-      include("index.php");
-    }
-      
+
     ?>
+
   </div>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
-    </script>
+  </script>
 
   <script src="js/app.js">
   </script>
 </body>
-
-
 </html>

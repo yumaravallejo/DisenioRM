@@ -88,7 +88,7 @@ function mostrarContrasenia(inputId, checkId) {
 }
 
 function cancelar() {
-  window.location.href = 'index.php? pages=main';
+  window.location.href = 'index.php?pages=main';
 }
 
 //var globales(pueden llamarse desde cualquier parte)
@@ -97,5 +97,31 @@ function cancelar() {
 
 //onKeyUp --> editar, para cuando se cambie el texto
 
+function mostrarMas() {
+  const botonmas = document.getElementById('mmas');
+  const botonmenos = document.getElementById('mmenos');
+  const pagi1 = document.getElementById('pagi1');
+  const pagi2 = document.getElementById('pagi2');
+  
+  if (window.getComputedStyle(pagi2).display === "none" && window.getComputedStyle(botonmenos).display === "none") {
+    pagi2.style.display = "block";
+    pagi1.style.display = "none";
+    botonmas.style.display = "none";
+    botonmenos.style.display = "block";
+  }
+}
 
+function mostrarMenos() {
+  const botonmas = document.getElementById('mmas');
+  const botonmenos = document.getElementById('mmenos');
+  const pagi1 = document.getElementById('pagi1');
+  const pagi2 = document.getElementById('pagi2');
+  
+  if (window.getComputedStyle(pagi1).display === "none" && window.getComputedStyle(botonmas).display === "none") {
+    pagi1.style.display = "block";
+    pagi2.style.display = "none";
+    botonmenos.style.display = "none";
+    botonmas.style.display = "block";
+  }
+}
 

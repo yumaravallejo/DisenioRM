@@ -23,7 +23,7 @@ session_start();
 ?>
 
 <!doctype html>
-<html class="no-js" lang="es">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -51,8 +51,8 @@ session_start();
       <div class="interno">
         <h2>¿Estás seguro de que quieres eliminar tu cuenta?</h2>
         <div class="botones">
+          <p><a href="index.php" class="boton-cancelar">Cancelar</a></p>
           <form action="eliminar.php" method="post">
-          <input type="submit" value="Cancelar" name="cancelar" title="La única decisión correcta" class="cancelar pointer" onclick="cancelar()">
           <input type="submit" value="Eliminar" name="eliminar" title="Si pulsas eres del barca" class="completar pointer">
         </form>
         </div>

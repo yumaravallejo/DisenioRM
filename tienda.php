@@ -45,7 +45,6 @@ function obtenerProductos($conex) {
     
 
     <?php
-        if (isset($_SESSION['inicio'])) {
             include ("header.php");
             $productos = obtenerProductos($conex);
     ?>
@@ -74,9 +73,6 @@ function obtenerProductos($conex) {
         </div>
 
       <?php
-        } else {
-            include("login.php");
-        }
         include("footer.php");
       ?>
     </div>
