@@ -5,7 +5,6 @@
 html {
   box-sizing: border-box;
   position: relative;
-  min-height: 100%;
 }
 
 body {
@@ -21,7 +20,8 @@ body {
 #contenedor{
   display: flex;
   flex-direction: column;
-
+  justify-content: space-between;
+  height: 100vh;
 }
 
 .contenedor-grande {
@@ -274,7 +274,6 @@ header {
 /* CONTENIDO PRINCIPAL ------------------------------------------------- */
 
 #contenido {
-  padding-top: 6vh;
   margin: 0 auto;
   width: 85%;
 }
@@ -284,8 +283,9 @@ header {
   line-height: 1.2em;
 }
 
-#contenido h2 {
-  padding-top: 1em;
+.titulo-p {
+  padding-top: 3em;
+  font-size: 2em;
   color: #453C69;
   text-align: center;
 }
@@ -300,7 +300,6 @@ header {
 }
 
 #contenido-r h2 {
-  padding-top: 2em;
   color: #453C69;
   color: #453C69;
   text-align: center;
@@ -929,8 +928,8 @@ ol {
 .mensaje2 {
   display: flex;
   flex-direction:column ;
-  position: absolute;
-  bottom: 10%;
+  position:absolute;
+  bottom: 14%;
   width: 100%;
   align-items: center;
   text-align: center;
@@ -1209,16 +1208,54 @@ ol {
 
 
 @media only screen and (min-width:899.504px) {
-  #pagi1 {
-    display: none;
+  #contenido {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+    width: 65%;
   }
 
-  #pagi2 {
+  .notis {
+    color: white;
+    background-color: #453C69;
+    margin-bottom: -15.6px;
+    padding:5px
+  }
+
+  .noticia {
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 20px
+  }
+
+  .content-noti {
+    display:flex;
+    justify-content: space-evenly;
+  }
+
+  .noticia img {
+    min-width: 550px;
+    width: 50%;
+    box-shadow: 7px 7px 6px 0 rgba(20, 20, 20, 0.3);
+  }
+
+  .texto-noticia {
+    padding: 20px;
+    font-size: 1em;
+    
+  }
+
+  #pagi1 {
     display: block;
   }
 
-  #mmas {
+  #pagi2 {
     display: none;
+  }
+
+  #mmas {
+    display: block;
   }
 
   #mmenos {

@@ -108,70 +108,7 @@ if(document.getElementsByClassName("ok2")[0] && document.getElementsByClassName(
 
     <div id="contenedor">
 
-        <header>
-            <div class="header-cont">
-                <div class="cabecera">
-                    <div id="logo-madrid"><img src="img/escudo.png"></div>
-                    <div class="en-blanco"></div>
-                    <div id="texto-madrid">
-                        <h1>REAL MADRID CF</h1>
-                    </div>
-                    <div id="logo-adidas"><img src="img/adidog.png"></div>
-                </div>
-                <div id="menu-in">
-                    <!-- Icono de hamburguesa (oculto) -->
-                    <div class="hamburguer-menu" id="burger-menu" onclick="mostrarMenu()">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                    </div>
-
-                    <!-- Menú normal (Pantalla Grande) -->
-                    <nav id="nav">
-                        <ol class="nav-list">
-                            <li class="nav-item"><a class="nav-link" href="index.php" title="Ir al índice">INICIO</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="competicion.php"
-                                    title="Ver competiciones y clasificación">COMPETICIONES</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="tienda.php" title="Tienda Oficial">TIENDA</a>
-                            </li>
-                        </ol>
-                    </nav>
-
-                    <!-- Menú pequeño (Hamburguesa) -->
-                    <nav class="offScreenMenu" id="burger">
-                        <ol class="lista-off">
-                            <li class="item-off"><a class="link-off" href="index.php" title="Ir al índice">INICIO</a>
-                            </li>
-                            <li class="item-off"><a class="link-off" href="competicion.php"
-                                    title="Ver competiciones y clasificación">COMPETICIONES</a>
-                            </li>
-                            <li class="item-off, last"><a class="link-off" href="tienda.php"
-                                    title="Tienda Oficial">TIENDA</a></li>
-                        </ol>
-                    </nav>
-
-                    <!-- Barra de búsqueda -->
-                    <div id="busq-user-car">
-                        <ol>
-                            <li>
-                                <form>
-                                    <input alt="buscar" id="busqueda" name="busqueda" placeholder="Buscar..."
-                                        title="Buscar Productos/Apartado" type="text">
-                                </form>
-                            </li>
-                            <li><a href="#" onclick="ponerHola()" title="Carrito de compras"><img class="abajo"
-                                        src="img/icons8-carrito-de-compras-26.png" /></a>
-                            </li>
-                            <li><a href="usuario.php" title="Perfil de usuario"><img
-                                        src="img/icons8-usuario-masculino-en-círculo-26.png" /></a></li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </header>
-
+        <?php include("header.php"); ?>
 
         <div id="contenido-r" class="moverArriba">
             <h2>CREAR CUENTA</h2>
@@ -188,13 +125,6 @@ if(document.getElementsByClassName("ok2")[0] && document.getElementsByClassName(
                         required title="Introduce una contraseña" type="password" value="" maxlength="15" minlength="6">
                 </div>
 
-                <div class="contrase">
-                    <i id="ojo2" class="fa fa-eye fa-2x pointer abajo"
-                        onclick="mostrarContrasenia('input_pass2', 'ojo2')"></i>
-                    <input id="input_pass2" alt="Confirmar contraseña" name="input_pass"
-                        placeholder="Confirmar contraseña" required title="Confirmar contraseña" type="password"
-                        value="" maxlength="15" minlength="6">
-                </div>
                 <input class="boton-cont pointer" name="continuar" type="submit" value="continuar">
             </form>
 
