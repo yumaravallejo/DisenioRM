@@ -9,7 +9,7 @@ if (!$conex) {
         $nombre = $_SESSION['name'];
         $contra = $_SESSION['password'];
 
-        $consulta1 = "SELECT emailusuario, idusuario FROM usuarios WHERE nomusuario = ? AND contrasenia = ?";
+        $consulta1 = "SELECT emailusuario, idusuario FROM usuarios WHERE nomusuario = ? AND contrausuario = ?";
         $stmt = $conex->prepare($consulta1);
         $stmt->bind_param("ss", $nombre, $contra);
         $stmt->execute();
