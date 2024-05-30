@@ -24,7 +24,7 @@ if (!$conex) {
                 $email2 = trim($_POST['perfcorreo']);
                 $contrasenia = trim($_POST['perfcontra']);
 
-                $consulta2 = "UPDATE usuarios SET nomusuario = ?, emailusuario = ?, contrasenia = ? WHERE idusuario = ?";
+                $consulta2 = "UPDATE usuarios SET nomusuario = ?, emailusuario = ?, contrausuario = ? WHERE idusuario = ?";
                 $stmt2 = $conex->prepare($consulta2);
                 $stmt2->bind_param("sssi", $name, $email2, $contrasenia, $id);
                 $resultado2 = $stmt2->execute();
