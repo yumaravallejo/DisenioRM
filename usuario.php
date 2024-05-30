@@ -1,53 +1,73 @@
 <?php
-  session_start();
-  include("conexion_db.php");
-  //var_dump($_SESSION); --> te muestra lo que guarda la sesión (Cuenta como html --> da conflicto con el header location)
-  //(Todo lo que cuenta como impresion, ))
+session_start();
+include("conexion_db.php");
+
 if (!$conex) {
-  echo "No ha podido establacerse la conexión";
+    echo "No ha podido establecerse la conexión";
 } else {
-  if (isset($_SESSION['inicio']) && $_SESSION['inicio']) {
-    $nombre = $_SESSION['name'];
-    $contra = $_SESSION['password'];
-    $consulta1 = "SELECT emailusuario FROM usuarios WHERE nomusuario = '$nombre' AND contrausuario = '$contra'";
+    if (isset($_SESSION['inicio']) && $_SESSION['inicio']) {
+        $nombre = $_SESSION['name'];
+        $contra = $_SESSION['password'];
 
-    // Ejecutar la consulta
-    $resultado1 = mysqli_query($conex, $consulta1);
+        $consulta1 = "SELECT emailusuario, idusuario FROM usuarios WHERE nomusuario = ? AND contrasenia = ?";
+        $stmt = $conex->prepare($consulta1);
+        $stmt->bind_param("ss", $nombre, $contra);
+        $stmt->execute();
+        $resultado1 = $stmt->get_result();
 
-    if ($fila = mysqli_fetch_assoc($resultado1)) {
-      // Obtener el email del usuario
-      $email = $fila['emailusuario'];
-      
-      $consulta2 = "SELECT idusuario FROM usuarios WHERE nomusuario = '$nombre' AND contrausuario = '$contra'";
+        if ($fila = $resultado1->fetch_assoc()) {
+            $email = $fila['emailusuario'];
+            $id = $fila['idusuario'];
 
-      $id = mysqli_query($conex, $consulta2);
+            if (isset($_POST["cambio"])) {
+                $name = trim($_POST['perfuser']);
+                $email2 = trim($_POST['perfcorreo']);
+                $contrasenia = trim($_POST['perfcontra']);
 
-      if ($id) {
-        if (isset($_POST["cambio"])) {
-        $name =trim($_POST['perfuser']);
-        $email2=trim($_POST['perfcorreo']);
-        $contrasenia=trim($_POST['perfcontra']);
+                $consulta2 = "UPDATE usuarios SET nomusuario = ?, emailusuario = ?, contrasenia = ? WHERE idusuario = ?";
+                $stmt2 = $conex->prepare($consulta2);
+                $stmt2->bind_param("sssi", $name, $email2, $contrasenia, $id);
+                $resultado2 = $stmt2->execute();
 
-        $consulta2 = "UPDATE usuarios 
-                      SET nomusuario = '$nombre', emailusuario = '$email2', contrausuario = '$contrasenia' 
-                      WHERE idusuario = '$id';";
-      } else {
-        echo "No se ha pulsado nada";
-      }
+                if ($resultado2) {
+                    // Actualiza las variables de sesión con los nuevos datos
+                    $_SESSION['name'] = $name;
+                    $_SESSION['password'] = $contrasenia;
+                    $_SESSION['email'] = $email2;
+
+                    ?>
+                        <div class="mensaje2">
+                                <h3 id="welcome" class="ok2">Espera unos segundos...</h3>
+                        </div>
+                        <script>
+                            setTimeout(function() {
+                                window.location.href = 'usuario.php';
+                            }, 3000); // 3000 milliseconds = 3 seconds
+                        </script>
+                    <?php
+                } else {
+                    echo "Error al actualizar los datos";
+                }
+            }
+        } else {
+            echo "No se encontraron usuarios con el nombre y contraseña proporcionados.";
+        }
     } else {
-      echo "No se ha podido encontrar la id";
+        header("Location: index.php");
+        exit;
     }
-    } else {
-      // Si no se encontraron resultados, mostrar un mensaje de error o redirigir al usuario
-      echo "No se encontraron usuarios con el nombre y contraseña proporcionados.";
-    }
-  } else {
-    header("Location: index.php");
-    exit;
-  }
 }
-
 ?>
+<script>
+  //Esto cogerá el elemento 0 que tenga la clase ok (solo lo tiene esa) además de comprobar que el texto es ese para asegurar
+  if(document.getElementsByClassName("ok2")[0] && document.getElementsByClassName("ok2")[0].textContent == "¡Bienvenido madridista!"){
+      setTimeout(function() { //Esto hará que se dispare la función los 3000 ms después  de que aparezca el bienvenido
+      window.location.href = 'usuario.php';
+      
+      }, 3000);
+  }
+</script>
+
 
 <!doctype html>
 <html class="no-js" lang="es">
