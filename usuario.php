@@ -36,7 +36,7 @@ if (!$conex) {
                     $_SESSION['email'] = $email2;
 
                     ?>
-                        <div class="mensaje2">
+                        <div class="mensaje3">
                                 <h3 id="welcome" class="ok2">Espera unos segundos...</h3>
                         </div>
                         <script>

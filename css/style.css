@@ -935,6 +935,15 @@ ol {
   text-align: center;
 }
 
+.mensaje3 {
+  position: absolute;
+  bottom: 19%;
+  right: 4%;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
 .frases {
   display: flex;
 }
